@@ -18,6 +18,9 @@ pipeline {
         }
         success {
             echo "${GESCHAFFT}"
+            mail to: 'jgrezinger@gmail.com'
+                subject: "${GESCHAFFT}"
+                body: "Yayy!"
         }
         unstable {
             echo 'I am unstable :/'
