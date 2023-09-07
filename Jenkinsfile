@@ -17,19 +17,19 @@ pipeline {
             echo 'One way or another, I have finished'
         }
         success {
-            echo "${SUCCESS}"
+            echo '${SUCCESS}'
             mail to: 'jgrezinger@gmail.com'
-                subject: "${SUCCESS}"
-                body: "Yayy!"
+                subject: '${SUCCESS}'
+                body: 'Yayy!'
         }
         unstable {
             echo 'I am unstable :/'
         }
         failure {
-            echo "${FAIL}"
+            echo '${FAIL}'
             mail to: 'jgrezinger@gmail.com'
-                subject: "Es hat nicht geklappt"
-                body: "Irgendwas hat nicht geklappt, ${FAIL}!"
+                subject: 'Es hat nicht geklappt'
+                body: 'Irgendwas hat nicht geklappt, ${FAIL}!'
         }
         changed {
             echo 'Things were different before...'
