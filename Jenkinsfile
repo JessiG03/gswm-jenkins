@@ -2,7 +2,7 @@
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     environment{
-        SUCCEES = 'Es hat geklappt!'
+        GESCHAFFT = 'Es hat geklappt!'
         FAIL = 'Du doofe Nuss'
     }
     stages {
@@ -17,7 +17,7 @@ pipeline {
             echo 'One way or another, I have finished'
         }
         success {
-            echo "${SUCCESS}"
+            echo "${GESCHAFFT}"
         }
         unstable {
             echo 'I am unstable :/'
