@@ -1,11 +1,38 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
+    environment{
+        SUCCEES = 'Es hat geklappt!'
+        FAIL = 'Du doofe Nuss'
+    }
     stages {
         stage('build') {
             steps {
                 sh 'mvn --version'
             }
+        }
+    }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+        }
+        success {
+            echo "${SUCCESS}"
+            mail to: 'jgrezinger@gmail.com'
+                subject: "${SUCCESS}"
+                body: "Yayy!"
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo "${FAIL}"
+            mail to: 'jgrezinger@gmail.com'
+                subject: "Es hat nicht geklappt"
+                body: "Irgendwas hat nicht geklappt, ${FAIL}!"
+        }
+        changed {
+            echo 'Things were different before...'
         }
     }
 }
