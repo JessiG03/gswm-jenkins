@@ -17,13 +17,13 @@ pipeline {
             echo 'One way or another, I have finished'
         }
         success {
-            echo '${SUCCESS}'
+            echo "${SUCCESS}"
         }
         unstable {
             echo 'I am unstable :/'
         }
         failure {
-            echo '${FAIL}'
+            echo "${FAIL}"
         }
         changed {
             echo 'Things were different before...'
